@@ -1,0 +1,5 @@
+# Install formula foo with 'brew' in default path
+- name: Get Neovim via Brew
+  community.general.homebrew:
+    name: neovim
+    state: present
