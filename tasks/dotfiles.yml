@@ -7,6 +7,10 @@
     force: yes
     accept_hostkey: yes
     version: main
+  tags:
+    - install
+    - dotfiles
+- name: Copy config files to .config folder
   shell: cd "{{ lookup('env', 'HOME') }}/.dotfiles" && cp -R ./.dotfiles/* ./.config/
   tags:
     - install
