@@ -11,7 +11,7 @@
     - install
     - dotfiles
 - name: Copy config files to .config folder
-  shell: cd "{{ lookup('env', 'HOME') }}/.dotfiles" && cp -R ./.dotfiles/* ./.config/
+  shell: rm -rf "$HOME/.config/nvim" && mkdir "$HOME/.config/nvim" && cp -R "$HOME/.dotfiles/nvim" "$HOME/.config"
   tags:
     - install
     - dotfiles
