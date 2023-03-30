@@ -20,8 +20,3 @@
   tags:
     - install
     - neovim
-- name: Source packer
-  shell: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-  tags:
-    - install
-    - neovim
