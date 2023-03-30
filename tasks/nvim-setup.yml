@@ -6,6 +6,13 @@
   tags:
     - install
     - neovim
+- name: Get ripgrep
+  community.general.homebrew:
+    name: ripgrep
+    state: present
+  tags:
+    - install
+    - neovim
 - name: Install packer
   ansible.builtin.git:
     repo: 'https://github.com/wbthomason/packer.nvim'
