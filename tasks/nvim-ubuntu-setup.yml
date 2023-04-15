@@ -1,3 +1,9 @@
+- name: Install nvm
+  ansible.builtin.shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+- name: Install Rust
+  ansible.builtin.shell: >
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
 - name: Install packer
   ansible.builtin.git:
     repo: 'https://github.com/wbthomason/packer.nvim'
