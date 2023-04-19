@@ -1,9 +1,11 @@
 - name: Install nvm
   ansible.builtin.shell: |
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
 - name: Install Rust
   ansible.builtin.shell: >
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+
 - name: Install packer
   ansible.builtin.git:
     repo: 'https://github.com/wbthomason/packer.nvim'
@@ -11,13 +13,35 @@
   tags:
     - install
     - neovim
+
 - name: Download ripgrep
   shell: 'curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb'
+
 - name: Instal ripgrep
   become: yes
   become_method: sudo
   shell: 'sudo dpkg -i ripgrep_13.0.0_amd64.deb'
+
 - name: Clean up ripgrep install file
   file:
     path: './ripgrep_13.0.0_amd64.deb'
     state: absent
+
+- name: Install Tmux
+  become: yes
+  become_method: sudo
+  package:
+    name: tmux
+    state: present
+  tags:
+    - install
+    - tmux
+
+- name: Install TPM (Tmux package manager)
+  git:
+    repo: 'https://github.com/tmux-plugins/tpm.git'
+    dest: "{{ lookup('env', 'HOME')  }}/.tmux/plugins/tpm"
+  tags:
+    - install
+    - tmux
+
