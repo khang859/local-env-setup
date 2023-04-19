@@ -15,3 +15,9 @@
   tags:
     - install
     - dotfiles
+
+- name: Copy tmux config to .config folder
+  shell: rm -rf "$HOME/.config/.tmux.conf" && cp "$HOME/.dotfiles/.tmux.conf" "$HOME/.config/.tmux.conf"
+  tags:
+    - install
+    - dotfiles
